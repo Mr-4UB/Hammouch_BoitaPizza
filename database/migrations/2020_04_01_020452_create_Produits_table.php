@@ -22,7 +22,7 @@ class CreateProduitsTable extends Migration
             $table->dateTime('Date_fin');
             $table->boolean('isPromo');
             $table->text('imgPath');
-            $table->foreign('catID')->references('id')->on('CatProduit')->onDelete('cascade');
+            $table->foreign('catID')->references('id')->on('CatProduits')->onDelete('cascade');
             $table->timestamps();
         });
     }
