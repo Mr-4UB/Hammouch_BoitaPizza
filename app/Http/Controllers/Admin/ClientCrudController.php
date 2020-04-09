@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\ProduitsRequest;
+use App\Http\Requests\ClientRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
-use App\Models\Produits;
+
 /**
- * Class ProduitsCrudController
+ * Class ClientCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class ProduitsCrudController extends CrudController
+class ClientCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -21,9 +21,9 @@ class ProduitsCrudController extends CrudController
 
     public function setup()
     {
-        $this->crud->setModel('App\Models\Produits');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/produits');
-        $this->crud->setEntityNameStrings('produits', 'produits');
+        $this->crud->setModel('App\Models\Client');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/client');
+        $this->crud->setEntityNameStrings('client', 'clients');
     }
 
     protected function setupListOperation()
@@ -37,24 +37,24 @@ class ProduitsCrudController extends CrudController
             'label' => 'Nom',
         ];
         $f2 = [
-            'name' => 'Prix',
+            'name' => 'Prenom',
             'type' => 'text',
-            'label' => 'Prix',
+            'label' => 'Prenom',
         ];
         $f3 = [
-            'name' => 'Remise',
+            'name' => 'Email',
             'type' => 'text',
-            'label' => 'Remise',
+            'label' => 'Email',
         ];
         $f4 = [
-            'name' => 'isPromo',
-            'type' => 'boolean',
-            'label' => 'Is Promo',
+            'name' => 'Adresse',
+            'type' => 'text',
+            'label' => 'Adresse',
         ];
         $f5 = [
-            'name' => 'categorie.NomCat',
-            'type' => 'text',
-            'label' => 'Categorie',
+            'name' => 'Date_inscription',
+            'type' => 'date',
+            'label' => 'Date Inscription',
         ];
         $f6 = [
             'name' => 'imgPath',
@@ -75,20 +75,9 @@ class ProduitsCrudController extends CrudController
             'upload' => true,
             'crop' => true, 
             'aspect_ratio' => 1, 
+            
         ]);
-        CRUD::addField([  // Select
-            'label' => "Categorie",
-            'type' => 'select',
-            'name' => 'catID', // the db column for the foreign key
-            'entity' => 'categorie', // the method that defines the relationship in your Model
-            'attribute' => 'NomCat', // foreign key attribute that is shown to user
-            /*'model' => "App\Models\CatProduit",
-            'options'   => (function ($query) {
-                 return $query->orderBy('NomCat', 'ASC')->get();
-             }),*/
-        ]);
-
-        $this->crud->setValidation(ProduitsRequest::class);
+        $this->crud->setValidation(ClientRequest::class);
 
         // TODO: remove setFromDb() and manually define Fields
         $this->crud->setFromDb();
@@ -99,44 +88,42 @@ class ProduitsCrudController extends CrudController
         $this->setupCreateOperation();
     }
 
-     protected function setupShowOperation()
+    protected function setupShowOperation()
     {
-        $this->crud->set('show.setFromDb', false);
-
         $f1 = [
             'name' => 'Nom',
             'type' => 'text',
             'label' => 'Nom',
         ];
         $f2 = [
-            'name' => 'Prix',
+            'name' => 'Prenom',
             'type' => 'text',
-            'label' => 'Prix',
+            'label' => 'Prenom',
         ];
         $f3 = [
-            'name' => 'Remise',
+            'name' => 'Email',
             'type' => 'text',
-            'label' => 'Remise',
+            'label' => 'Email',
         ];
         $f4 = [
-            'name' => 'Date_debut',
-            'type' => 'date',
-            'label' => 'Date Debut',
+            'name' => 'Adresse',
+            'type' => 'text',
+            'label' => 'Adresse',
         ];
         $f5 = [
-            'name' => 'Date_fin',
-            'type' => 'date',
-            'label' => 'Date Fin',
+            'name' => 'login',
+            'type' => 'text',
+            'label' => 'Login',
         ];
         $f6 = [
-            'name' => 'isPromo',
-            'type' => 'boolean',
-            'label' => 'Is Promo',
+            'name' => 'MotdePasse',
+            'type' => 'text',
+            'label' => 'Mot de Passe',
         ];
         $f7 = [
-            'name' => 'CatProduit.NomCat',
-            'type' => 'text',
-            'label' => 'Categorie',
+            'name' => 'Date_inscription',
+            'type' => 'date',
+            'label' => 'Date Inscription',
         ];
         $f8 = [
             'name' => 'imgPath',
@@ -144,8 +131,7 @@ class ProduitsCrudController extends CrudController
             'label' => 'Image',
             'height' => '100px'
         ];
-
-        $this->crud->addColumns([$f1, $f2, $f3, $f4, $f5, $f6, $f7, $f8]);
         
+        $this->crud->addColumns([$f1, $f2, $f3, $f4, $f5, $f6, $f7, $f8]);
     }
 }

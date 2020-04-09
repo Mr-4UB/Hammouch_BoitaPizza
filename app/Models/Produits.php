@@ -28,6 +28,9 @@ class Produits extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
+    public function categorie(){
+        return $this->belongsTo('App\Models\CatProduit', 'catID');
+    }
 
     /*
     |--------------------------------------------------------------------------

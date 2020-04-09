@@ -5,7 +5,7 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class CatProduit extends Model
+class Client extends Model
 {
     use CrudTrait;
 
@@ -15,7 +15,7 @@ class CatProduit extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'catproduits';
+    protected $table = 'client';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
@@ -28,10 +28,6 @@ class CatProduit extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-    public function produits()
-     {
-         return $this->hasMany(Produits::class);
-     }
 
     /*
     |--------------------------------------------------------------------------
