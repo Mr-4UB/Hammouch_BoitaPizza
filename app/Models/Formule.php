@@ -5,7 +5,7 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class CategorieProduit extends Model
+class Formule extends Model
 {
     use CrudTrait;
 
@@ -15,7 +15,7 @@ class CategorieProduit extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'categorie_produits';
+    protected $table = 'formule';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];

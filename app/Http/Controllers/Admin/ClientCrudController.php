@@ -43,7 +43,7 @@ class ClientCrudController extends CrudController
         ];
         $f3 = [
             'name' => 'Email',
-            'type' => 'text',
+            'type' => 'email',
             'label' => 'Email',
         ];
         $f4 = [
@@ -60,15 +60,17 @@ class ClientCrudController extends CrudController
             'name' => 'imgPath',
             'type' => 'image',
             'label' => 'Image',
-            'height' => '100px'
+            'height' => '100px',
         ];
         
-        $this->crud->addColumns([$f1, $f2, $f3, $f4, $f5, $f6]);
+        $this->crud->addColumns([$f6, $f1, $f2, $f3, $f4, $f5]);
     }
 
     protected function setupCreateOperation()
     {
-        $this->crud->addField([
+        $this->crud->setValidation(ClientRequest::class);
+
+        $f8 = [
             'label' => "Image",
             'name' => "imgPath",
             'type' => 'image',
@@ -76,11 +78,49 @@ class ClientCrudController extends CrudController
             'crop' => true, 
             'aspect_ratio' => 1, 
             
-        ]);
-        $this->crud->setValidation(ClientRequest::class);
+        ];
+
+        $f1 = [
+            'name' => 'Nom',
+            'type' => 'text',
+            'label' => 'Nom',
+        ];
+        $f2 = [
+            'name' => 'Prenom',
+            'type' => 'text',
+            'label' => 'Prenom',
+        ];
+        $f3 = [
+            'name' => 'Email',
+            'type' => 'email',
+            'label' => 'Email',
+        ];
+        $f4 = [
+            'name' => 'Adresse',
+            'type' => 'text',
+            'label' => 'Adresse',
+        ];
+        $f5 = [
+            'name' => 'login',
+            'type' => 'text',
+            'label' => 'Login',
+        ];
+        $f6 = [
+            'name' => 'MotdePasse',
+            'type' => 'password',
+            'label' => 'Mot de Passe',
+        ];
+        $f7 = [
+            'name' => 'Date_inscription',
+            'type' => 'date',
+            'label' => 'Date Inscription',
+        ];
+        
 
         // TODO: remove setFromDb() and manually define Fields
-        $this->crud->setFromDb();
+        //$this->crud->setFromDb();
+        $this->crud->addFields([$f8, $f1, $f2, $f3, $f4, $f5, $f6, $f7]);
+
     }
 
     protected function setupUpdateOperation()
@@ -102,7 +142,7 @@ class ClientCrudController extends CrudController
         ];
         $f3 = [
             'name' => 'Email',
-            'type' => 'text',
+            'type' => 'email',
             'label' => 'Email',
         ];
         $f4 = [
@@ -117,7 +157,7 @@ class ClientCrudController extends CrudController
         ];
         $f6 = [
             'name' => 'MotdePasse',
-            'type' => 'text',
+            'type' => 'password',
             'label' => 'Mot de Passe',
         ];
         $f7 = [

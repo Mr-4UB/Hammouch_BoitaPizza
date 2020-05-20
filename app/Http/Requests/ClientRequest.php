@@ -27,6 +27,15 @@ class ClientRequest extends FormRequest
     {
         return [
             // 'name' => 'required|min:5|max:255'
+            'Nom' => 'string|required|min:5|max:50',
+            'Prenom' => 'string|required|min:5|max:50',
+            'Email' => 'required|email',
+            'Adresse' => 'required|min:5|max:255',
+            'login' => 'required|min:5|max:100',
+            'MotdePasse' => 'string|required|alpha_num|min:8',
+            'Date_inscription' => 'required',
+            'imgPath' => 'required',
+
         ];
     }
 
@@ -38,7 +47,7 @@ class ClientRequest extends FormRequest
     public function attributes()
     {
         return [
-            //
+            // 
         ];
     }
 

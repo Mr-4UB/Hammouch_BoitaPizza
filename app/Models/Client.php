@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Hash;
 
 class Client extends Model
 {
@@ -28,12 +29,18 @@ class Client extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-
+    public function setMotdePasseAttribute($value) {
+        $this->attributes['MotdePasse'] = Hash::make($value);
+    }
     /*
     |--------------------------------------------------------------------------
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+    public function commentaires()
+     {
+         return $this->hasMany(Commentaire::class);
+     }
 
     /*
     |--------------------------------------------------------------------------

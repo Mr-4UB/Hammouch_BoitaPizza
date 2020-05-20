@@ -37,6 +37,10 @@ class Produits extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+    public function commentaires()
+     {
+         return $this->hasMany(Commentaire::class);
+     }
 
     /*
     |--------------------------------------------------------------------------

@@ -63,7 +63,7 @@ class ProduitsCrudController extends CrudController
             'height' => '100px'
         ];
         
-        $this->crud->addColumns([$f1, $f2, $f3, $f4, $f5, $f6]);
+        $this->crud->addColumns([$f6, $f1, $f2, $f3, $f4, $f5]);
     }
 
     protected function setupCreateOperation()
@@ -99,7 +99,7 @@ class ProduitsCrudController extends CrudController
         $this->setupCreateOperation();
     }
 
-     protected function setupShowOperation()
+    protected function setupShowOperation()
     {
         $this->crud->set('show.setFromDb', false);
 

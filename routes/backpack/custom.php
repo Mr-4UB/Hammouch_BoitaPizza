@@ -11,11 +11,13 @@ Route::group([
     'middleware' => ['web', config('backpack.base.middleware_key', 'admin')],
     'namespace'  => 'App\Http\Controllers\Admin',
 ], function () { // custom admin routes
-    Route::crud('categories', 'CategoriesCrudController');
-    Route::crud('categorieproduit', 'CategorieProduitCrudController');
+    //Route::crud('categories', 'CategoriesCrudController');
+    //Route::crud('categorieproduit', 'CategorieProduitCrudController');
     Route::crud('produits', 'ProduitsCrudController');
     Route::crud('catproduit', 'CatProduitCrudController');
     Route::crud('catproduit', 'CatProduitCrudController');
     Route::crud('catproduit', 'CatProduitCrudController');
     Route::crud('client', 'ClientCrudController');
+    Route::crud('formule', 'FormuleCrudController');
+    Route::crud('commentaire', 'CommentaireCrudController');
 }); // this should be the absolute last line of this file
